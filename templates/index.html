@@ -3,27 +3,104 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>COVID19</title>
-		<link rel="stylesheet" type="text/css" href="index.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				background: #334d50;
+				height: 100vh;
+				background: linear-gradient(to top, #cbcaa5, #334d50);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+			h1 {
+				padding: 10px;
+			}
+			input {
+				margin: 10px;
+			}
+			.card {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.file-input {
+				display: inline-block;
+				text-align: left;
+				background: #dfdfdf;
+				padding: 16px;
+				width: 450px;
+				position: relative;
+				border-radius: 3px;
+			}
+			.file-input > [type='file'] {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				z-index: 10;
+				cursor: pointer;
+			}
+			.file-input > .button {
+				display: inline-block;
+				cursor: pointer;
+				background: #eee;
+				padding: 8px 16px;
+				border-radius: 2px;
+				margin-right: 8px;
+			}
+			.file-input:hover > .button {
+				background: dodgerblue;
+				color: white;
+			}
+			.file-input > .label {
+				color: #333;
+				white-space: nowrap;
+				opacity: 0.3;
+			}
+			.file-input.-chosen > .label {
+				opacity: 1;
+			}
+		</style>
 	</head>
 	<body>
 		<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
 			<div class="card">
-				<h1 class="header">
-					Upload Image To Detect COVID19
-				</h1>
-				<div>
-					<strong>Choose Image:</strong>
-					<input
-						class="btn btn-primary btn-block btn-large"
-						type="file"
-						name="file"
-						accept="image/*"
-						multiple
-					/>
+				<h1 class="header">Upload Image To Detect COVID19</h1>
+				<div class="file-input">
+					<input type="file" name="file" accept="image/*" multiple /> <span class="button">Choose</span>
+					<span class="label" data-js-label>No file selected</span>
 				</div>
-
 				<input type="submit" value="Predict!" class="btn btn-primary btn-block btn-large" />
 			</div>
 		</form>
+		<script>
+			var inputs = document.querySelectorAll('.file-input');
+
+			for (var i = 0, len = inputs.length; i < len; i++) {
+				customInput(inputs[i]);
+			}
+
+			function customInput(el) {
+				const fileInput = el.querySelector('[type="file"]');
+				const label = el.querySelector('[data-js-label]');
+
+				fileInput.onmouseout = function() {
+					if (!fileInput.value) return;
+
+					var value = fileInput.value.replace(/^.*[\\\/]/, '');
+					el.className += ' -chosen';
+					label.innerText = value;
+				};
+			}
+		</script>
 	</body>
 </html>
