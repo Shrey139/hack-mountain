@@ -1,16 +1,50 @@
 <!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>COVID19</title>
-</head>
-<body>
-<div class="login card">
-Uploaded Image: 
-<br><br>
-<img src=" {{url_for('send_image', filename=image_name)}}">
-<br>
-{{text}}
-</div>
-</body>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>COVID19</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #334d50;
+        height: 100vh;
+        background: linear-gradient(to top, #cbcaa5, #334d50);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+      h2 {
+        padding: 20px;
+      }
+      p{
+        padding: 20px;
+      }
+      input {
+        margin: 10px;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      img {
+        height: auto;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+    Uploaded Image:
+    </p>
+    <img src=" {{url_for('send_image', filename=image_name)}}" />
+    <h2>{{text}}</h2>
+  </body>
 </html>
