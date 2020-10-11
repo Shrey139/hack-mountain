@@ -11,8 +11,16 @@ Dataset taken from the below reference
 [https://github.com/ieee8023/covid-chestxray-dataset](https://github.com/ieee8023/covid-chestxray-dataset)
 
 ## Run the project
+- `pip install -r requirements.txt
 - `python app.py`
 
+## Technologies
+- Flask
+- Python3
+- Tensorflow
+- Keras
+- HTML/CSS/JS
 
 ![Header Image](./upload.png)
 ![Header Image](./prediction.png)
+
