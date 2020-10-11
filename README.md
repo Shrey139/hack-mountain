@@ -11,7 +11,7 @@ Dataset taken from the below reference
 [https://github.com/ieee8023/covid-chestxray-dataset](https://github.com/ieee8023/covid-chestxray-dataset)
 
 ## Run the project
-- `pip install -r requirements.txt
+- `pip install -r requirements.txt`
 - `python app.py`
 
 ## Technologies
