@@ -1,7 +1,49 @@
-<h1>Hello Results Page!</h1>
-<a href="{{ url_for('index') }}">Back</a><p>
-<ul>
-{% for file_url in file_urls %}
-    <li><img style="height: 150px" src="{{ file_url }}"></li>
-{% endfor %}
-</ul>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>COVID19</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #334d50;
+        height: 100vh;
+        background: linear-gradient(to top, #cbcaa5, #334d50);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      h1 {
+        padding: 10px;
+      }
+      input {
+        margin: 10px;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+	  img{
+		  height: auto;
+		  width: 200px;
+	  }
+    </style>
+  </head>
+  <body>
+    <h1>Hello Results Page!</h1>
+    <a href="{{ url_for('index') }}">Back</a>
+    <p></p>
+    <ul>
+      {% for file_url in file_urls %}
+      <li><img width="100" height="100" src="{{ file_url }}" /></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
